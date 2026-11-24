@@ -251,6 +251,79 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .focus li{color:var(--band-ink-2)}
 @media (max-width:860px){.quiz{grid-template-columns:1fr;gap:24px}.opts{grid-template-columns:1fr 1fr}.opts button:last-child{grid-column:1/-1}.barrow{grid-template-columns:110px 1fr 34px}}
 
+/* Score: benchmark, gate and full report */
+.bench{margin-top:26px;display:grid;gap:12px}
+.scale{position:relative;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--stall) 0%,var(--accent) 50%,var(--move) 100%);opacity:.9;margin:34px 0 30px}
+.scale .mk{position:absolute;top:-6px;width:2px;height:22px;background:var(--band-ink-2);font-style:normal}
+.scale .mk b,.scale .mk em{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-style:normal}
+.scale .mk b{top:-20px;font-weight:600;color:var(--band-ink-2)}
+.scale .mk em{top:24px;color:var(--band-ink-2);font-variant-numeric:tabular-nums}
+.scale .mk.you{width:4px;background:var(--band-ink);top:-9px;height:28px}
+.scale .mk.you b{color:var(--band-ink);font-weight:800;font-size:13px;top:-22px}
+.bench-say{color:var(--band-ink-2);font-size:15px}.bench-say b{color:var(--band-ink)}
+.barrow .t{position:relative}
+.barrow .t u{position:absolute;top:-3px;width:2px;height:14px;background:var(--band-ink);opacity:.75;text-decoration:none}
+.bench-key{font-size:12.5px;color:var(--band-ink-2);margin-top:10px;display:flex;gap:8px;align-items:center}
+.bench-key u{display:inline-block;width:2px;height:12px;background:var(--band-ink);opacity:.75}
+.prio{margin:0;padding-left:22px;display:grid;gap:12px}
+.prio li{color:var(--band-ink-2)}.prio li b{display:block;color:var(--band-ink);font-size:16px}
+.gate{margin-top:28px;border:1.5px solid var(--accent);border-radius:10px;padding:24px;display:grid;grid-template-columns:1fr;gap:20px;background:color-mix(in srgb,var(--accent) 7%,transparent)}
+.gate h3{color:var(--band-ink);margin:4px 0 10px}
+.gate .ticks{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}.gate .ticks li{color:var(--band-ink-2)}
+.lead{display:grid;gap:12px}
+.lead label{display:grid;gap:5px;font-size:13px;font-weight:600;color:var(--band-ink)}
+.lead input,.lead select{font:inherit;font-weight:400;font-size:15px;padding:10px 12px;border-radius:var(--r);border:1.5px solid var(--band-rule);background:rgba(255,255,255,.95);color:#1E2B47}
+.lead .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lead .chk{display:flex;gap:8px;align-items:flex-start;font-weight:400;color:var(--band-ink-2)}
+.lead .chk input{margin-top:3px}
+.lead .err{color:#FFB4A8;font-size:13.5px;min-height:0;margin:0}
+.lead .fine,.gate-done p{font-size:12.5px;color:var(--band-ink-2)}
+.gate-done{grid-column:1/-1;display:grid;gap:8px;justify-items:start}
+@media (max-width:860px){.gate .ticks,.lead .two{grid-template-columns:1fr}}
+#fullReport{padding-block:72px}
+.rep{display:grid;gap:44px}
+.rep-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:20px}
+.rep-meta{color:var(--ink-2);font-size:14px}
+.rep-score{text-align:right}.rep-score span{font-family:var(--f-display);font-weight:900;font-size:72px;line-height:.9;color:var(--accent-ink)}
+.rep-score small{display:block;color:var(--ink-2);font-size:13px}
+.rep-sec{display:grid;gap:16px;padding:0}
+#fullReport{scroll-margin-top:72px}
+.rep-sec > p{color:var(--ink-2);max-width:72ch}
+.rep-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rep-cols ul,.month ul{margin:6px 0 0;padding-left:18px;display:grid;gap:6px;color:var(--ink-2)}
+.months{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.month{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:20px}
+.month h4{margin:4px 0 0;font-size:18px}
+.area-card{border-top:1px solid var(--rule);padding-top:20px;display:grid;gap:14px}
+.ac-head{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.ac-head h4{font-size:20px;margin:0}
+.pill{font-size:12.5px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--paper-2)}
+.pill.l0,.pill.l1{background:color-mix(in srgb,var(--stall) 18%,transparent);color:var(--stall)}
+.pill.l2{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent-ink)}
+.pill.l3,.pill.l4{background:color-mix(in srgb,var(--move) 18%,transparent);color:var(--move)}
+.ac-bench{font-size:12.5px;color:var(--ink-2);margin-left:auto}
+.ac-q{color:var(--ink-2);font-size:14.5px}
+.ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ac-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ac-steps > div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px}
+.ac-grid p:not(.area),.ac-steps p:not(.area){color:var(--ink-2);font-size:14.5px;margin-top:4px}
+.ac-kpi{font-size:14.5px;color:var(--ink-2)}.ac-kpi b{color:var(--ink)}
+.rep .fine{font-size:12.5px;color:var(--ink-2)}
+@media (max-width:860px){.rep-cols,.months,.ac-grid,.ac-steps{grid-template-columns:1fr}.ac-bench{margin-left:0}}
+@media print{body.printing-report > *:not(main),body.printing-report header,body.printing-report footer,body.printing-report .banner{display:none!important}
+ body.printing-report .page{display:none!important}
+ body.printing-report .page[data-page="score"]{display:block!important}
+ body.printing-report .page[data-page="score"] > section.band{display:none!important}
+ body.printing-report #fullReport{padding:0}
+ body.printing-report .rep-next .ctas{display:none}
+ body.printing-report .area-card{break-inside:avoid}
+ body.printing-report .rep-cols,body.printing-report .ac-grid{grid-template-columns:1fr 1fr!important}
+ body.printing-report .months,body.printing-report .ac-steps{grid-template-columns:repeat(3,1fr)!important}
+ body.printing-report .ac-bench{margin-left:auto!important}
+ body.printing-report .rep{gap:24px}
+ body.printing-report .rep-sec > h3{break-after:avoid}
+ body.printing-report .area-card{padding-top:12px;gap:10px}}
+
 /* Partners */
 .partners{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .partner{padding:24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;gap:8px;align-content:start}
@@ -674,18 +747,19 @@ footer .logo img{height:auto;width:min(300px,100%)}
     <div class="sec-head">
       <p class="eyebrow">Sales Progression Score</p>
       <h1 id="scoreH" style="font-size:clamp(36px,5vw,60px)">How well do your deals move?</h1>
-      <p class="lede">Answer ten questions about how your team sells today. You'll get a score out of 100 and the three areas to fix first.</p>
+      <p class="lede">Answer ten questions about how your team sells today. In about three minutes you'll see your score out of 100, how you compare with other teams and your top three priorities. Then get a free, detailed 90-day improvement plan.</p>
     </div>
     <div class="quiz">
       <div class="quiz-side">
         <span class="num" id="qCount" style="font-size:14px;font-weight:600">Question 1 of 10</span>
         <div class="prog" aria-hidden="true"><i id="qProg"></i></div>
-        <p style="font-size:14.5px;color:var(--band-ink-2)">Answer for your team as it works today, not as you'd like it to. Your answers stay on this page.</p>
+        <p style="font-size:14.5px;color:var(--band-ink-2)">Answer for your team as it works today, not as you'd like it to.</p>
       </div>
       <div class="quiz-card" id="quizCard" aria-live="polite"></div>
     </div>
   </div>
 </section>
+<section id="fullReport" class="report" hidden aria-label="Your full report"></section>
 </div>
 
 <!-- ================= PARTNERS ================= -->
@@ -968,8 +1042,25 @@ footer .logo img{height:auto;width:min(300px,100%)}
     ['Stalled deals','Deals that stall are spotted and acted on within 30 days.'],
     ['Owner dependence','Revenue would hold steady if the owner or top seller stepped back for three months.']];
   const OPT=['Never','Rarely','Sometimes','Usually','Always'];
-  const FIX={Planning:'Plan each meeting with STAR on Monday.','Stage clarity':'Define DICER stages with clear success tests.','Follow-up speed':'Set a follow-up standard and track days to next meeting.',Forecasting:'Base forecast categories on buyer evidence.',Coaching:'Run weekly 1:1s on one coaching lever per deal.','Weekly review':'Install a Friday review of results and activity.','CRM discipline':'Add three CRM fields: stage, outcome, next action.',Measurement:'Track discovery-to-next-stage progression monthly.','Stalled deals':'Flag deals with no buyer movement in 30 days.','Owner dependence':'Move deal ownership and coaching from owner to manager.'};
-  let qi=0, ans=Array(Q.length).fill(null); const card=$('#quizCard');
+  // Indicative benchmarks (0-4 per area). Placeholders until real client data replaces them.
+  const BENCH={typical:[1.8,1.6,2.4,1.5,1.7,2.0,2.1,1.3,1.6,1.4],top:[3.4,3.2,3.6,3.1,3.3,3.5,3.4,3.0,3.2,2.9]};
+  const BENCH_TOTAL={typical:44,top:81};
+  // Report content for each area
+  const R={
+   'Planning':{why:'Meetings without a clear buyer outcome feel productive but rarely move the deal. Planning is the cheapest lever in sales: ten minutes before a meeting changes what happens in it.',good:'Every meeting has a written purpose and a specific buyer action you are asking for, agreed with the manager for important deals.',now:'Before each meeting this week, write one line: "By the end of this meeting, the buyer will have…".',d30:'Plan every meeting with STAR on Monday mornings and review the plans for the top ten deals in 1:1s.',d90:'Make the planned buyer outcome a required field and compare it with what actually happened.',kpi:'Share of meetings with a written buyer outcome (target: 90% or more).'},
+   'Stage clarity':{why:'If stages are based on seller opinion, the pipeline looks fuller than it is and nobody can agree on where a deal really sits.',good:'Every live opportunity sits in a DICER stage, and it only moves when the buyer has done something you can point to.',now:'Pick your ten biggest deals and write down the last thing each buyer actually did.',d30:'Agree DICER stages with a clear success test for each, and re-stage the whole pipeline against them.',d90:'Stage changes in the CRM require the buyer evidence, and managers audit a sample each month.',kpi:'Share of opportunities with buyer evidence for their current stage.'},
+   'Follow-up speed':{why:'Momentum fades fast after a discovery meeting. Slow follow-up is one of the most common reasons good opportunities quietly stall.',good:'Every discovery meeting has a follow-up and a next meeting booked within five working days, and you can see the exceptions.',now:'List every discovery meeting from the last two weeks with no next meeting booked, and follow each one up.',d30:'Set a five-day follow-up standard and track days from discovery to next meeting for each seller.',d90:'Make "next meeting booked" the agreed outcome of every discovery meeting and review the average weekly.',kpi:'Average working days from discovery meeting to next meeting.'},
+   'Forecasting':{why:'A confidence-based forecast swings with mood. Leaders lose trust in the numbers, and decisions on hiring, stock and cash get made on guesswork.',good:'Forecast categories are tied to buyer actions, so a deal is "commit" because of what the buyer has done, not how the seller feels.',now:'For each deal in this month\'s forecast, write the buyer action that justifies its category.',d30:'Redefine forecast categories around buyer evidence and run the next forecast on the new rules.',d90:'Track forecast accuracy month by month and coach the sellers whose numbers drift the most.',kpi:'Forecast accuracy: forecast versus actual for the month (target: within 10%).'},
+   'Coaching':{why:'Without regular deal-level coaching, the gap between your best and average seller stays fixed, and managers spend their time inspecting rather than improving.',good:'Every seller has a short weekly 1:1 focused on specific deals and one coaching lever, not a report-out of activity.',now:'Book a 30-minute weekly 1:1 with each seller and bring their two most important deals to the first one.',d30:'Run 1:1s on one coaching lever per deal and record the agreed next buyer action.',d90:'Review each seller\'s progression rate quarterly to see whether coaching is moving it.',kpi:'1:1s held as planned, and each seller\'s progression rate over time.'},
+   'Weekly review':{why:'Without a weekly rhythm, small problems compound for a month before anyone notices, and targets stop meaning anything.',good:'A short Friday review of results, activity and progression, with one or two adjustments agreed for next week.',now:'Hold a 30-minute Friday review this week: what moved, what stalled and one change for next week.',d30:'Use the same three or four numbers every week so trends become visible.',d90:'Link the weekly review to the monthly forecast and quarterly targets.',kpi:'Weekly reviews held, and actions from the last review completed.'},
+   'CRM discipline':{why:'If the CRM does not hold the stage, outcome and next action, managers chase sellers for updates and nobody trusts the reports.',good:'Three fields are kept current for every meeting: stage, outcome and next action. Nothing more is required.',now:'Check how many live opportunities have a dated next action. Fix the gaps in this week\'s 1:1s.',d30:'Cut required fields to the three that matter and make them mandatory.',d90:'Run reports and coaching directly from the CRM so sellers see value in keeping it current.',kpi:'Share of live opportunities with a dated next action.'},
+   'Measurement':{why:'Most teams measure activity and revenue, but not the step in between. Without progression rates you cannot see where deals leak or which seller needs which help.',good:'You know what share of discovery meetings move to the next stage, by seller and by month.',now:'Count last quarter\'s discovery meetings and how many reached the next stage. That is your baseline progression rate.',d30:'Track the progression rate monthly for the team and for each seller.',d90:'Set a progression target and use the gap between best and average seller to focus coaching.',kpi:'Discovery-to-next-stage progression rate.'},
+   'Stalled deals':{why:'Stalled deals clog the pipeline and inflate the forecast. The longer they sit, the less likely they are to close.',good:'Any deal with no buyer movement for 30 days is flagged automatically and gets a decision: re-engage, re-stage or close.',now:'List every deal with no buyer action in the last 30 days and decide on each one.',d30:'Set up a weekly "no movement in 30 days" report and review it in the Friday meeting.',d90:'Track how long deals sit in each stage and coach on the stage where deals stall most.',kpi:'Value of pipeline with no buyer movement in 30 days.'},
+   'Owner dependence':{why:'When revenue relies on the owner or one star seller, the business is fragile, hard to grow and worth less to a buyer or investor.',good:'Deals, relationships and coaching sit with the team and its manager. The owner sets direction but is not the engine.',now:'List the top ten relationships the owner or top seller holds personally and name a second contact for each.',d30:'Move coaching and pipeline reviews from the owner to a sales manager.',d90:'Document the sales system so new sellers ramp faster and results do not depend on one person.',kpi:'Share of revenue from deals led by someone other than the owner or top seller.'}
+  };
+  const LEVEL=v=>v<=1?['Not yet in place','This is a priority. Small, simple changes here usually produce the fastest gains.']:v===2?['Inconsistent','The habit exists but depends on the seller or the week. The aim is to make it routine.']:v===3?['Mostly working','A good base. Tighten it so it holds when the team is busy.']:['Strong','This is a strength. Protect it as the team grows.'];
+  const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  let qi=0, ans=Array(Q.length).fill(null); const card=$('#quizCard'), full=$('#fullReport');
   function renderQ(){
     $('#qCount').textContent=`Question ${qi+1} of ${Q.length}`;
     $('#qProg').style.width=(ans.filter(a=>a!==null).length/Q.length*100)+'%';
@@ -981,18 +1072,100 @@ footer .logo img{height:auto;width:min(300px,100%)}
     $('#qBack').onclick=()=>{qi--;renderQ()};
     $('#qNext').onclick=()=>{if(ans[qi]===null)return; if(qi<Q.length-1){qi++;renderQ()}else result()};
   }
+  function bandOf(total){return total<40?['Stalled','Activity is high but deals are not reliably moving. The fastest gains are usually in the areas below.']:total<70?['Moving, unevenly','Some of the system is in place. Progression depends on which seller has the deal.']:['Progressing','You have a working rhythm. The gains now come from closing the gap between your best and average seller.']}
   function result(){
-    const total=Math.round(ans.reduce((a,b)=>a+b,0)/(Q.length*4)*100);
-    const band=total<40?['Stalled','Activity is high but deals are not reliably moving. The fastest gains are usually in the areas below.']:total<70?['Moving, unevenly','Some of the system is in place. Progression depends on which seller has the deal.']:['Progressing','You have a working rhythm. A diagnostic will show where your best seller beats your average one.'];
+    const total=Math.round(ans.reduce((a,b)=>a+b,0)/(Q.length*4)*100), band=bandOf(total);
     $('#qCount').textContent='Your result'; $('#qProg').style.width='100%';
-    const order=Q.map((q,i)=>[q[0],ans[i]]).sort((a,b)=>a[1]-b[1]);
+    const order=Q.map((q,i)=>[q[0],ans[i],i]).sort((a,b)=>a[1]-b[1]||(BENCH.typical[b[2]]-b[1])-(BENCH.typical[a[2]]-a[1]));
     const col=v=>v<=1?'var(--stall)':v===2?'var(--accent)':'var(--move)';
+    const vsT=total-BENCH_TOTAL.typical;
     card.innerHTML=`<div style="display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap"><div class="res-score">${total}</div><div><p class="area">out of 100</p><p class="res-band">${band[0]}</p></div></div>
       <p style="margin-top:14px;color:var(--band-ink-2);max-width:60ch">${band[1]}</p>
-      <div class="bars">${Q.map((q,i)=>`<div class="barrow"><span>${q[0]}</span><span class="t"><i style="width:${ans[i]/4*100}%;background:${col(ans[i])}"></i></span><span class="v">${ans[i]}/4</span></div>`).join('')}</div>
-      <div class="focus"><p class="area">Fix these first</p><ul style="margin:0;padding-left:18px;display:grid;gap:6px">${order.slice(0,3).map(o=>`<li><b style="color:var(--band-ink)">${o[0]}.</b> ${FIX[o[0]]}</li>`).join('')}</ul></div>
-      <div class="quiz-nav"><a class="btn btn-primary" href="#contact" data-topic="diag">Book a Pipeline Performance Review</a><button type="button" class="btn btn-ghost" id="qRe">Start again</button></div>`;
-    $('#qRe').onclick=()=>{qi=0;ans=Array(Q.length).fill(null);renderQ()};
+      <div class="bench" aria-label="Your score compared with indicative benchmarks">
+        <p class="area">How you compare</p>
+        <div class="scale"><span class="seg"></span>
+          <i class="mk" style="left:${BENCH_TOTAL.typical}%"><em>Typical team ${BENCH_TOTAL.typical}</em></i>
+          <i class="mk" style="left:${BENCH_TOTAL.top}%"><em>Top teams ${BENCH_TOTAL.top}</em></i>
+          <i class="mk you" style="left:${total}%"><b>You ${total}</b></i></div>
+        <p class="bench-say">${vsT>=0?`You are <b>${vsT} points above</b> a typical team`:`You are <b>${-vsT} points below</b> a typical team`}, and <b>${Math.max(0,BENCH_TOTAL.top-total)} points</b> from top-performing teams.</p>
+      </div>
+      <div class="bars">${Q.map((q,i)=>`<div class="barrow"><span>${q[0]}</span><span class="t"><i style="width:${ans[i]/4*100}%;background:${col(ans[i])}"></i><u style="left:${BENCH.typical[i]/4*100}%" title="Typical team"></u></span><span class="v">${ans[i]}/4</span></div>`).join('')}</div>
+      <p class="bench-key"><u></u> Typical team. Benchmarks are indicative and will be updated as SHIFT client data builds.</p>
+      <div class="focus"><p class="area">Your three priorities</p>
+        <ol class="prio">${order.slice(0,3).map(o=>`<li><b>${o[0]}</b><span>${R[o[0]].why}</span></li>`).join('')}</ol></div>
+      <div class="gate" id="gate">
+        <div class="gate-copy">
+          <p class="area">Get your full report, free</p>
+          <h3>Your detailed 90-day improvement plan</h3>
+          <ul class="ticks">
+            <li>What each of your ten scores means, and what good looks like</li>
+            <li>Actions for this week, the next 30 days and the next 90 days</li>
+            <li>The one number to track for each area</li>
+            <li>A month-by-month plan built around your weakest areas</li>
+            <li>A copy emailed to you, to share with your team</li>
+          </ul>
+        </div>
+        <form id="leadForm" class="lead" novalidate>
+          <div class="two"><label>First name<input name="first" autocomplete="given-name" required></label><label>Last name<input name="last" autocomplete="family-name" required></label></div>
+          <label>Work email<input name="email" type="email" autocomplete="email" required></label>
+          <div class="two"><label>Company<input name="company" autocomplete="organization" required></label><label>Role<input name="role" autocomplete="organization-title"></label></div>
+          <label>Sales team size<select name="team" required><option value="">Choose…</option><option>1 to 5</option><option>6 to 15</option><option>16 to 50</option><option>51 to 200</option><option>More than 200</option></select></label>
+          <label class="chk"><input type="checkbox" name="optin"> Send me occasional SHIFT insights. Unsubscribe at any time.</label>
+          <p class="err" id="leadErr" role="alert"></p>
+          <button class="btn btn-primary" type="submit">Get my full report</button>
+          <p class="fine">We use your details to send your report and follow up about SHIFT. We never sell them. See our privacy policy.</p>
+        </form>
+      </div>
+      <div class="quiz-nav"><a class="btn btn-ghost" href="#contact" data-topic="diag">Book a Pipeline Performance Review</a><button type="button" class="btn btn-ghost" id="qRe">Start again</button></div>`;
+    $('#qRe').onclick=()=>{qi=0;ans=Array(Q.length).fill(null);full.hidden=true;full.innerHTML='';renderQ()};
+    $('#leadForm').onsubmit=e=>{e.preventDefault();const f=e.target, d=Object.fromEntries(new FormData(f));
+      const err=$('#leadErr'); err.textContent='';
+      if(!d.first||!d.last||!d.company||!d.team){err.textContent='Please fill in your name, company and team size.';return}
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email||'')){err.textContent='Please enter a valid email address.';return}
+      const lead={...d,optin:!!d.optin,score:total,band:band[0],answers:Object.fromEntries(Q.map((q,i)=>[q[0],ans[i]])),submittedAt:new Date().toISOString()};
+      submitLead(lead); renderFull(lead,order,total,band);
+      $('#gate').innerHTML=`<div class="gate-done"><p class="area">Thanks, ${esc(d.first)}</p><h3>Your full report is below</h3><p>When email delivery is switched on, a copy will also be sent to ${esc(d.email)}.</p><a class="btn btn-primary" href="#fullReport" id="toFull">Read my full report</a></div>`;
+      $('#toFull').onclick=ev=>{ev.preventDefault();full.scrollIntoView({behavior:'smooth'})};
+      full.scrollIntoView({behavior:'smooth'});};
+  }
+  // Lead capture hook. Not connected yet: the site is a design concept.
+  window.SHIFT_LEAD_ENDPOINT=null;
+  function submitLead(lead){ if(!window.SHIFT_LEAD_ENDPOINT) return;
+    fetch(window.SHIFT_LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)}).catch(()=>{}); }
+  function renderFull(lead,order,total,band){
+    const weak=order.filter(o=>o[1]<=2), plan=(weak.length?weak:order).slice(0,6);
+    const m1=plan.slice(0,2), m2=plan.slice(2,4), m3=plan.slice(4,6);
+    const date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+    const strengths=order.filter(o=>o[1]>=3).slice(-3).reverse();
+    full.innerHTML=`<div class="wrap rep">
+      <div class="rep-head"><div><p class="eyebrow">Sales Progression Report</p><h2>${esc(lead.company)}</h2><p class="rep-meta">Prepared for ${esc(lead.first)} ${esc(lead.last)} · ${date}</p></div>
+        <div class="rep-score"><span>${total}</span><small>out of 100 · ${band[0]}</small></div></div>
+      <section class="rep-sec"><h3>Summary</h3>
+        <p>${band[1]} Your score of ${total} compares with ${BENCH_TOTAL.typical} for a typical team and ${BENCH_TOTAL.top} for top-performing teams.</p>
+        <div class="rep-cols"><div><p class="area">Biggest opportunities</p><ul>${order.slice(0,3).map(o=>`<li><b>${o[0]}</b>: ${LEVEL(o[1])[0].toLowerCase()} (${o[1]}/4)</li>`).join('')}</ul></div>
+        <div><p class="area">Strengths to protect</p><ul>${strengths.length?strengths.map(o=>`<li><b>${o[0]}</b>: ${o[1]}/4</li>`).join(''):'<li>None of the ten areas is consistently in place yet. That means quick wins are available almost everywhere.</li>'}</ul></div></div>
+      </section>
+      <section class="rep-sec"><h3>Your 90-day plan</h3>
+        <div class="months">
+          ${[['Days 1 to 30','Get the basics in place',m1],['Days 31 to 60','Build the rhythm',m2],['Days 61 to 90','Make it stick',m3]].map(([h,s,items])=>`<div class="month"><p class="area">${h}</p><h4>${s}</h4><ul>${items.length?items.map(o=>`<li><b>${o[0]}.</b> ${R[o[0]].d30}</li>`).join(''):'<li>Keep the habits from earlier months running every week.</li>'}</ul></div>`).join('')}
+        </div>
+        <p class="fine">Start with the first column. Each month adds to the last, so keep the earlier habits running.</p>
+      </section>
+      <section class="rep-sec"><h3>Area by area</h3>
+        ${order.map(([a,v,i])=>{const r=R[a],L=LEVEL(v);return `<article class="area-card">
+          <div class="ac-head"><h4>${a}</h4><span class="pill l${v}">${L[0]} · ${v}/4</span><span class="ac-bench">Typical team ${BENCH.typical[i].toFixed(1)} · Top teams ${BENCH.top[i].toFixed(1)}</span></div>
+          <p class="ac-q">"${Q[i][1]}" You answered: <b>${OPT[v]}</b>. ${L[1]}</p>
+          <div class="ac-grid"><div><p class="area">Why it matters</p><p>${r.why}</p></div><div><p class="area">What good looks like</p><p>${r.good}</p></div></div>
+          <div class="ac-steps"><div><p class="area">This week</p><p>${r.now}</p></div><div><p class="area">Next 30 days</p><p>${r.d30}</p></div><div><p class="area">Next 90 days</p><p>${r.d90}</p></div></div>
+          <p class="ac-kpi"><b>Track:</b> ${r.kpi}</p></article>`}).join('')}
+      </section>
+      <section class="rep-sec rep-next"><h3>Where SHIFT can help</h3>
+        <p>A Pipeline Performance Review measures your real progression rates from your CRM and meetings, compares your best and average sellers, and turns this plan into a costed program.</p>
+        <div class="ctas"><a class="btn btn-primary" href="#contact" data-topic="diag">Book a Pipeline Performance Review</a><button type="button" class="btn btn-ghost" id="repPrint">Save as PDF</button></div>
+        <p class="fine">Benchmarks are indicative and will be updated as SHIFT client data builds. This report is general guidance based on your answers, not a substitute for a full review.</p>
+      </section></div>`;
+    full.hidden=false;
+    $('#repPrint').onclick=()=>{document.body.classList.add('printing-report');window.print();setTimeout(()=>document.body.classList.remove('printing-report'),500)};
   }
   renderQ();
 
