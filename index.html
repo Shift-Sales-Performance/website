@@ -326,6 +326,12 @@ input[type=range]{width:100%;accent-color:var(--accent)}
  body.printing-report .rep-sec > h3{break-after:avoid}
  body.printing-report .area-card{padding-top:12px;gap:10px}}
 
+.legal-text{max-width:760px;display:grid;gap:14px}
+.legal-text h2{font-size:24px;margin-top:18px}
+.legal-text p,.legal-text li{color:var(--ink-2)}
+.legal-text ul{margin:0;padding-left:20px;display:grid;gap:8px}
+.legal-text a{color:var(--accent-ink)}
+
 /* Partners */
 .partners{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
 .partner{padding:24px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);display:grid;gap:8px;align-content:start}
@@ -880,6 +886,53 @@ footer .logo img{height:auto;width:min(300px,100%)}
 </section>
 </div>
 
+<!-- ================= PRIVACY ================= -->
+<div class="page" data-page="privacy" hidden>
+<div class="page-hero"><div class="wrap"><div class="sec-head">
+  <p class="eyebrow">Privacy policy</p>
+  <h1>How we handle your information</h1>
+  <p class="lede">We collect only what we need to respond to you and send what you ask for. We never sell your details.</p>
+</div></div></div>
+<section>
+  <div class="wrap"><div class="legal-text">
+    <p class="note">Draft for review. Last updated November 2026.</p>
+    <h2>Who we are</h2>
+    <p>Shift Sales Performance Pty Ltd (proposed) ("SHIFT", "we", "us") is based in Melbourne, Australia. This policy explains how we handle personal information under the Privacy Act 1988 (Cth) and the Australian Privacy Principles. You can contact us at <a href="mailto:info@shiftsalesperformance.com.au">info@shiftsalesperformance.com.au</a>.</p>
+    <h2>What we collect</h2>
+    <ul>
+      <li><b>Sales Progression Score.</b> Your answers to the ten questions. If you ask for the full report, we also collect your name, work email, company, role and sales team size, and whether you'd like to receive SHIFT insights.</li>
+      <li><b>Contact form and emails.</b> Your name, email, company, phone number if you give it, and what you tell us.</li>
+      <li><b>Website use.</b> Our website host keeps standard technical logs, such as IP addresses. We don't use advertising or tracking cookies.</li>
+    </ul>
+    <p>If you only answer the score questions and don't ask for the full report, your answers stay in your browser and we don't receive them.</p>
+    <h2>How we use it</h2>
+    <ul>
+      <li>To send you the report you asked for and reply to your enquiry.</li>
+      <li>To follow up about how SHIFT could help your team.</li>
+      <li>To send you occasional SHIFT insights, only if you ticked the box. Every one includes a way to unsubscribe.</li>
+      <li>To improve the score and our benchmarks, using combined results that don't identify you.</li>
+    </ul>
+    <h2>Who we share it with</h2>
+    <p>We don't sell or rent your information. We use a small number of service providers to run our services, and they handle it only on our behalf:</p>
+    <ul>
+      <li><b>Amazon Web Services</b> stores score report requests and sends our emails, from its Sydney region.</li>
+      <li><b>GitHub</b> hosts this website, and may keep technical logs outside Australia, including in the United States.</li>
+      <li>Our email and business software providers, to manage our correspondence.</li>
+    </ul>
+    <p>We may disclose information if the law requires it.</p>
+    <h2>How we protect it</h2>
+    <p>Your details are stored in Australia, encrypted, and accessible only to the SHIFT team. We keep them for as long as we need them for the purposes above, then delete them. You can ask us to delete them at any time.</p>
+    <h2>Your choices</h2>
+    <ul>
+      <li>You can ask for a copy of the information we hold about you, or ask us to correct or delete it.</li>
+      <li>You can unsubscribe from SHIFT insights at any time, using the link in any email or by writing to us.</li>
+    </ul>
+    <h2>Questions and complaints</h2>
+    <p>Email <a href="mailto:info@shiftsalesperformance.com.au">info@shiftsalesperformance.com.au</a>. We'll reply within 30 days. If you're not satisfied with our response, you can contact the Office of the Australian Information Commissioner at <a href="https://www.oaic.gov.au" rel="noopener">oaic.gov.au</a>.</p>
+  </div></div>
+</section>
+</div>
+
 <!-- ================= CONTACT ================= -->
 <div class="page" data-page="contact" hidden>
 <section aria-labelledby="contactH">
@@ -925,7 +978,7 @@ footer .logo img{height:auto;width:min(300px,100%)}
       <div><h4>Who it's for</h4><ul><li><a href="#private-business">Private business</a></li><li><a href="#institutional">Institutional business</a></li><li><a href="#partners">Referral partners</a></li></ul></div>
       <div><h4>Company</h4><ul><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#contact">Newsletter</a></li><li><a href="mailto:info@shiftsalesperformance.com.au">info@shiftsalesperformance.com.au</a></li></ul></div>
     </div>
-    <div class="legal"><span>© 2026 Shift Sales Performance Pty Ltd (proposed). All prices AUD excluding GST.</span><span>Privacy · Terms</span></div>
+    <div class="legal"><span>© 2026 Shift Sales Performance Pty Ltd (proposed). All prices AUD excluding GST.</span><span><a href="#privacy">Privacy</a></span></div>
   </div>
 </footer>
 
@@ -1117,7 +1170,7 @@ footer .logo img{height:auto;width:min(300px,100%)}
           <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
           <p class="err" id="leadErr" role="alert"></p>
           <button class="btn btn-primary" type="submit">Get my full report</button>
-          <p class="fine">We use your details to send your report and follow up about SHIFT. We never sell them. See our privacy policy.</p>
+          <p class="fine">We use your details to send your report and follow up about SHIFT. We never sell them. See our <a href="#privacy" style="color:inherit">privacy policy</a>.</p>
         </form>
       </div>
       <div class="quiz-nav"><a class="btn btn-ghost" href="#contact" data-topic="diag">Book a Pipeline Performance Review</a><button type="button" class="btn btn-ghost" id="qRe">Start again</button></div>`;
