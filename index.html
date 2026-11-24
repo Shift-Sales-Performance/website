@@ -243,13 +243,13 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .res-score{font-family:var(--f-display);font-weight:900;font-size:100px;line-height:.9;color:var(--accent);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .res-band{font-family:var(--f-display);font-weight:800;font-size:28px;margin-top:6px}
 .bars{display:grid;gap:10px;margin-top:20px}
-.barrow{display:grid;grid-template-columns:150px 1fr 40px;gap:12px;align-items:center;font-size:14px}
+.barrow{display:grid;grid-template-columns:150px 1fr 84px;gap:12px;align-items:center;font-size:14px}
 .barrow .t{height:8px;background:var(--band-rule);border-radius:4px;overflow:hidden}
 .barrow .t i{display:block;height:100%;border-radius:4px}
 .barrow .v{text-align:right;font-variant-numeric:tabular-nums}
 .focus{margin-top:22px;border-top:1px solid var(--band-rule);padding-top:18px;display:grid;gap:8px}
 .focus li{color:var(--band-ink-2)}
-@media (max-width:860px){.quiz{grid-template-columns:1fr;gap:24px}.opts{grid-template-columns:1fr 1fr}.opts button:last-child{grid-column:1/-1}.barrow{grid-template-columns:110px 1fr 34px}}
+@media (max-width:860px){.quiz{grid-template-columns:1fr;gap:24px}.opts{grid-template-columns:1fr 1fr}.opts button:last-child{grid-column:1/-1}.barrow{grid-template-columns:110px 1fr 74px}}
 
 /* Score: benchmark, gate and full report */
 .bench{margin-top:26px;display:grid;gap:12px}
@@ -260,6 +260,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .scale .mk em{top:24px;color:var(--band-ink-2);font-variant-numeric:tabular-nums}
 .scale .mk.you{width:4px;background:var(--band-ink);top:-9px;height:28px}
 .scale .mk.you b{color:var(--band-ink);font-weight:800;font-size:13px;top:-22px}
+.how{margin-top:8px;color:var(--band-ink-2);font-size:14px;max-width:62ch}.how b{color:var(--band-ink)}
 .bench-say{color:var(--band-ink-2);font-size:15px}.bench-say b{color:var(--band-ink)}
 .barrow .t{position:relative}
 .barrow .t u{position:absolute;top:-3px;width:2px;height:14px;background:var(--band-ink);opacity:.75;text-decoration:none}
@@ -276,6 +277,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 .lead .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .lead .chk{display:flex;gap:8px;align-items:flex-start;font-weight:400;color:var(--band-ink-2)}
 .lead .chk input{margin-top:3px}
+.lead .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .lead .err{color:#FFB4A8;font-size:13.5px;min-height:0;margin:0}
 .lead .fine,.gate-done p{font-size:12.5px;color:var(--band-ink-2)}
 .gate-done{grid-column:1/-1;display:grid;gap:8px;justify-items:start}
@@ -1081,6 +1083,7 @@ footer .logo img{height:auto;width:min(300px,100%)}
     const vsT=total-BENCH_TOTAL.typical;
     card.innerHTML=`<div style="display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap"><div class="res-score">${total}</div><div><p class="area">out of 100</p><p class="res-band">${band[0]}</p></div></div>
       <p style="margin-top:14px;color:var(--band-ink-2);max-width:60ch">${band[1]}</p>
+      <p class="how">How your score works: each answer scores from 0 (Never) to 4 (Always). Your ten answers add up to <b>${ans.reduce((a,b)=>a+b,0)} out of 40</b>, which is <b>${total} out of 100</b>.</p>
       <div class="bench" aria-label="Your score compared with indicative benchmarks">
         <p class="area">How you compare</p>
         <div class="scale"><span class="seg"></span>
@@ -1089,11 +1092,11 @@ footer .logo img{height:auto;width:min(300px,100%)}
           <i class="mk you" style="left:${total}%"><b>You ${total}</b></i></div>
         <p class="bench-say">${vsT>=0?`You are <b>${vsT} points above</b> a typical team`:`You are <b>${-vsT} points below</b> a typical team`}, and <b>${Math.max(0,BENCH_TOTAL.top-total)} points</b> from top-performing teams.</p>
       </div>
-      <div class="bars">${Q.map((q,i)=>`<div class="barrow"><span>${q[0]}</span><span class="t"><i style="width:${ans[i]/4*100}%;background:${col(ans[i])}"></i><u style="left:${BENCH.typical[i]/4*100}%" title="Typical team"></u></span><span class="v">${ans[i]}/4</span></div>`).join('')}</div>
-      <p class="bench-key"><u></u> Typical team. Benchmarks are indicative and will be updated as SHIFT client data builds.</p>
+      <div class="bars">${Q.map((q,i)=>`<div class="barrow"><span>${q[0]}</span><span class="t"><i style="width:${ans[i]/4*100}%;background:${col(ans[i])}"></i><u style="left:${BENCH.typical[i]/4*100}%" title="Typical team"></u></span><span class="v">${OPT[ans[i]]}</span></div>`).join('')}</div>
+      <p class="bench-key"><u></u> Where a typical team sits. Bars run from Never (empty) to Always (full). Benchmarks are indicative and will be updated as SHIFT client data builds.</p>
       <div class="focus"><p class="area">Your three priorities</p>
         <ol class="prio">${order.slice(0,3).map(o=>`<li><b>${o[0]}</b><span>${R[o[0]].why}</span></li>`).join('')}</ol></div>
-      <div class="gate" id="gate">
+      <div class="gate" id="leadGate">
         <div class="gate-copy">
           <p class="area">Get your full report, free</p>
           <h3>Your detailed 90-day improvement plan</h3>
@@ -1111,6 +1114,7 @@ footer .logo img{height:auto;width:min(300px,100%)}
           <div class="two"><label>Company<input name="company" autocomplete="organization" required></label><label>Role<input name="role" autocomplete="organization-title"></label></div>
           <label>Sales team size<select name="team" required><option value="">Choose…</option><option>1 to 5</option><option>6 to 15</option><option>16 to 50</option><option>51 to 200</option><option>More than 200</option></select></label>
           <label class="chk"><input type="checkbox" name="optin"> Send me occasional SHIFT insights. Unsubscribe at any time.</label>
+          <label class="hp" aria-hidden="true">Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label>
           <p class="err" id="leadErr" role="alert"></p>
           <button class="btn btn-primary" type="submit">Get my full report</button>
           <p class="fine">We use your details to send your report and follow up about SHIFT. We never sell them. See our privacy policy.</p>
@@ -1118,32 +1122,37 @@ footer .logo img{height:auto;width:min(300px,100%)}
       </div>
       <div class="quiz-nav"><a class="btn btn-ghost" href="#contact" data-topic="diag">Book a Pipeline Performance Review</a><button type="button" class="btn btn-ghost" id="qRe">Start again</button></div>`;
     $('#qRe').onclick=()=>{qi=0;ans=Array(Q.length).fill(null);full.hidden=true;full.innerHTML='';renderQ()};
-    $('#leadForm').onsubmit=e=>{e.preventDefault();const f=e.target, d=Object.fromEntries(new FormData(f));
+    $('#leadForm').onsubmit=async e=>{e.preventDefault();const f=e.target, d=Object.fromEntries(new FormData(f));
       const err=$('#leadErr'); err.textContent='';
       if(!d.first||!d.last||!d.company||!d.team){err.textContent='Please fill in your name, company and team size.';return}
       if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email||'')){err.textContent='Please enter a valid email address.';return}
-      const lead={...d,optin:!!d.optin,score:total,band:band[0],answers:Object.fromEntries(Q.map((q,i)=>[q[0],ans[i]])),submittedAt:new Date().toISOString()};
-      submitLead(lead); renderFull(lead,order,total,band);
-      $('#gate').innerHTML=`<div class="gate-done"><p class="area">Thanks, ${esc(d.first)}</p><h3>Your full report is below</h3><p>When email delivery is switched on, a copy will also be sent to ${esc(d.email)}.</p><a class="btn btn-primary" href="#fullReport" id="toFull">Read my full report</a></div>`;
+      const lead={first:d.first,last:d.last,email:d.email,company:d.company,role:d.role||'',team:d.team,optin:!!d.optin,website:d.website||'',answers:ans.slice(),source:'website'};
+      const btn=f.querySelector('button[type=submit]'); btn.disabled=true; btn.textContent='Preparing your report…';
+      const emailed=await submitLead(lead); renderFull(lead,order,total,band);
+      $('#leadGate').innerHTML=`<div class="gate-done"><p class="area">Thanks, ${esc(d.first)}</p><h3>Your full report is below</h3><p>${emailed?`We've also emailed a copy to ${esc(d.email)}.`:`Save a copy with the "Save as PDF" button at the end of the report.`}</p><a class="btn btn-primary" href="#fullReport" id="toFull">Read my full report</a></div>`;
       $('#toFull').onclick=ev=>{ev.preventDefault();full.scrollIntoView({behavior:'smooth'})};
       full.scrollIntoView({behavior:'smooth'});};
   }
-  // Lead capture hook. Not connected yet: the site is a design concept.
-  window.SHIFT_LEAD_ENDPOINT=null;
-  function submitLead(lead){ if(!window.SHIFT_LEAD_ENDPOINT) return;
-    fetch(window.SHIFT_LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)}).catch(()=>{}); }
+  // Lead capture: switched off until the sign-up endpoint has been reviewed. To switch on, set this to
+  // 'https://app.shiftsalesperformance.com.au/api/public/score-leads'.
+  const LEAD_ENDPOINT=null;
+  async function submitLead(lead){
+    if(!LEAD_ENDPOINT) return false;
+    try{const r=await fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','X-Requested-With':'shift'},body:JSON.stringify(lead),signal:AbortSignal.timeout(15000)});
+      if(!r.ok) return false; return !!(await r.json()).emailed;}catch{return false}
+  }
   function renderFull(lead,order,total,band){
     const weak=order.filter(o=>o[1]<=2), plan=(weak.length?weak:order).slice(0,6);
     const m1=plan.slice(0,2), m2=plan.slice(2,4), m3=plan.slice(4,6);
     const date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
     const strengths=order.filter(o=>o[1]>=3).slice(-3).reverse();
     full.innerHTML=`<div class="wrap rep">
-      <div class="rep-head"><div><p class="eyebrow">Sales Progression Report</p><h2>${esc(lead.company)}</h2><p class="rep-meta">Prepared for ${esc(lead.first)} ${esc(lead.last)} · ${date}</p></div>
+      <div class="rep-head"><div><p class="eyebrow">Sales Progression Report</p><h2>${esc(lead.company)}</h2><p class="rep-meta">${lead.first?`Prepared for ${esc(lead.first)} ${esc(lead.last)} · `:''}${date}</p></div>
         <div class="rep-score"><span>${total}</span><small>out of 100 · ${band[0]}</small></div></div>
       <section class="rep-sec"><h3>Summary</h3>
-        <p>${band[1]} Your score of ${total} compares with ${BENCH_TOTAL.typical} for a typical team and ${BENCH_TOTAL.top} for top-performing teams.</p>
-        <div class="rep-cols"><div><p class="area">Biggest opportunities</p><ul>${order.slice(0,3).map(o=>`<li><b>${o[0]}</b>: ${LEVEL(o[1])[0].toLowerCase()} (${o[1]}/4)</li>`).join('')}</ul></div>
-        <div><p class="area">Strengths to protect</p><ul>${strengths.length?strengths.map(o=>`<li><b>${o[0]}</b>: ${o[1]}/4</li>`).join(''):'<li>None of the ten areas is consistently in place yet. That means quick wins are available almost everywhere.</li>'}</ul></div></div>
+        <p>${band[1]} Your score of ${total} compares with ${BENCH_TOTAL.typical} for a typical team and ${BENCH_TOTAL.top} for top-performing teams. Each answer scores from 0 (Never) to 4 (Always), and your ten answers add up to ${ans.reduce((a,b)=>a+b,0)} out of 40.</p>
+        <div class="rep-cols"><div><p class="area">Biggest opportunities</p><ul>${order.slice(0,3).map(o=>`<li><b>${o[0]}</b>: ${LEVEL(o[1])[0].toLowerCase()} (you answered ${OPT[o[1]]})</li>`).join('')}</ul></div>
+        <div><p class="area">Strengths to protect</p><ul>${strengths.length?strengths.map(o=>`<li><b>${o[0]}</b>: you answered ${OPT[o[1]]}</li>`).join(''):'<li>None of the ten areas is consistently in place yet. That means quick wins are available almost everywhere.</li>'}</ul></div></div>
       </section>
       <section class="rep-sec"><h3>Your 90-day plan</h3>
         <div class="months">
@@ -1153,7 +1162,7 @@ footer .logo img{height:auto;width:min(300px,100%)}
       </section>
       <section class="rep-sec"><h3>Area by area</h3>
         ${order.map(([a,v,i])=>{const r=R[a],L=LEVEL(v);return `<article class="area-card">
-          <div class="ac-head"><h4>${a}</h4><span class="pill l${v}">${L[0]} · ${v}/4</span><span class="ac-bench">Typical team ${BENCH.typical[i].toFixed(1)} · Top teams ${BENCH.top[i].toFixed(1)}</span></div>
+          <div class="ac-head"><h4>${a}</h4><span class="pill l${v}">${L[0]}</span><span class="ac-bench">Typical team: ${OPT[Math.round(BENCH.typical[i])]} · Top teams: ${OPT[Math.round(BENCH.top[i])]}</span></div>
           <p class="ac-q">"${Q[i][1]}" You answered: <b>${OPT[v]}</b>. ${L[1]}</p>
           <div class="ac-grid"><div><p class="area">Why it matters</p><p>${r.why}</p></div><div><p class="area">What good looks like</p><p>${r.good}</p></div></div>
           <div class="ac-steps"><div><p class="area">This week</p><p>${r.now}</p></div><div><p class="area">Next 30 days</p><p>${r.d30}</p></div><div><p class="area">Next 90 days</p><p>${r.d90}</p></div></div>
@@ -1167,7 +1176,15 @@ footer .logo img{height:auto;width:min(300px,100%)}
     full.hidden=false;
     $('#repPrint').onclick=()=>{document.body.classList.add('printing-report');window.print();setTimeout(()=>document.body.classList.remove('printing-report'),500)};
   }
-  renderQ();
+  // A report link from the emailed report (?r=1031223012#score) opens the full report directly.
+  const rp=new URLSearchParams(location.search).get('r');
+  if(rp&&/^[0-4]{10}$/.test(rp)){
+    ans=rp.split('').map(Number); result();
+    const total=Math.round(ans.reduce((a,b)=>a+b,0)/(Q.length*4)*100);
+    const order=Q.map((q,i)=>[q[0],ans[i],i]).sort((a,b)=>a[1]-b[1]||(BENCH.typical[b[2]]-b[1])-(BENCH.typical[a[2]]-a[1]));
+    renderFull({first:'',last:'',company:'Your full report'},order,total,bandOf(total));
+    $('#leadGate').remove();
+  } else renderQ();
 
   // ---------- Contact ----------
   document.addEventListener('click',e=>{const t=e.target.closest('[data-topic]');if(t)$('#fTopic').value=t.dataset.topic});
